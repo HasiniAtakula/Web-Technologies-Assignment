@@ -1,0 +1,78 @@
+<html>
+  <body bgcolor="pink">
+    <h2 align="center">Job Resistration Form</h2>
+    <form align="center">
+      <table align="center">
+        <tr>
+          <td>User ID:</td>
+          <td>
+            <input type="text" placeholder="enter user id" id="n" /><br />
+          </td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td><input type="email" placeholder="enter email" id="e" /><br /></td>
+        </tr>
+        <tr>
+          <td>Number:</td>
+          <td>
+            <input
+              type="number"
+              placeholder="enter number"
+              id="m"
+            /><br /><br />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" value="submit" onclick="return validate();" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+  <head>
+    <script>
+      function validate() {
+        var un = document.getElementById('n');
+        var em = document.getElementById('e');
+        var mn = document.getElementById('m');
+
+        var uname = un.value;
+        var email = em.value;
+        var number = mn.value;
+
+        var unre = /^[a-zA-Z]+[0-9a-zA-Z._]*$/;
+        var ere = /^[a-zA-Z]+([\._]?\w+)*@\w+([\._]w+)*(\.\w{2,3})+$/;
+        var mre = /^[6-9][0-9]{9}$/;
+
+        if (unre.test(uname)) {
+          if (ere.test(email)) {
+            if (mre.test(number)) {
+              alert('Registered Successfully');
+              return true;
+            } else {
+              return error(mn);
+            }
+          } else {
+            return error(em);
+          }
+        } else {
+          return error(un);
+        }
+      }
+      function error(ele) {
+        alert('Invalid');
+        ele.style.border = '3px solid red';
+        ele.value = '';
+        ele.placeholder = 'Invalid';
+        ele.focus();
+        return false;
+      }
+    </script>
+  </head>
+  <p align="center">
+    24881A1206 <br />
+    A.Hasini
+  </p>
+</html>
